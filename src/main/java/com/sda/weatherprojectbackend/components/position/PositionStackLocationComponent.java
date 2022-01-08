@@ -1,4 +1,4 @@
-package com.sda.weatherprojectbackend.repositories.position;
+package com.sda.weatherprojectbackend.components.position;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,7 +13,7 @@ import java.net.http.HttpResponse;
 import java.util.*;
 
 @Component
-public class PositionStackLocationRepository implements ILocationService {
+public class PositionStackLocationComponent implements ILocationComponent {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     @Override

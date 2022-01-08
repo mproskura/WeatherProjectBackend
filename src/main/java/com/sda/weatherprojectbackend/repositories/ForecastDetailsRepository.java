@@ -1,4 +1,4 @@
-package com.sda.weatherprojectbackend.repositories.jpa;
+package com.sda.weatherprojectbackend.repositories;
 
 import com.sda.weatherprojectbackend.entities.ForecastDetailsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.sda.weatherprojectbackend.repositories.position;
+package com.sda.weatherprojectbackend.components.position;
 
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.utils.URIBuilder;
