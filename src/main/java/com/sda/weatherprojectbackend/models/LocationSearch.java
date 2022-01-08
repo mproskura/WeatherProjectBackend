@@ -1,4 +1,4 @@
-package models;
+package com.sda.weatherprojectbackend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class LocationSearch {
     private Long id;
     private String searchString;
-    private Location location;
+    private ForecastLocation location;
 }

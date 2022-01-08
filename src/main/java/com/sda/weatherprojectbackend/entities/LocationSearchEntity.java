@@ -1,4 +1,4 @@
-package entities;
+package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
 
@@ -18,6 +18,6 @@ public class LocationSearchEntity {
     @Column(name="search_string")
     private String searchString;
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="location_id")
-    private LocationEntity location;
+    @JoinColumn(name="locationSearches")
+    private ForecastLocationEntity location;
 }

@@ -1,32 +1,30 @@
-package models;
+package com.sda.weatherprojectbackend.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Location {
+@ToString
+public class ForecastLocation {
     private Long id;
     private double latitude;
     private double longitude;
     String type;
     String name;
     String number;
-    String postalCode;
+    String postal_code;
     String street;
     String confidence;
     String region;
-    String regionCode;
+    String region_code;
     String county;
     String locality;
-    String administrativeArea;
+    String administrative_area;
     String neighbourhood;
     String country;
-    String countryCode;
+    String country_code;
     String continent;
     String label;
 }

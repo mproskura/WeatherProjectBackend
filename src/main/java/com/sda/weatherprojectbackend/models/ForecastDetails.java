@@ -1,4 +1,4 @@
-package models;
+package com.sda.weatherprojectbackend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

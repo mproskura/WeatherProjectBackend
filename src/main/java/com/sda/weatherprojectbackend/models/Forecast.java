@@ -1,4 +1,4 @@
-package models;
+package com.sda.weatherprojectbackend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class Forecast {
     private Long id;
-    private Location location;
+    private ForecastLocation location;
     private LocalDate forecastDate;
     private LocalDate queryDate;
     private List<ForecastDetails> forecastDetails;

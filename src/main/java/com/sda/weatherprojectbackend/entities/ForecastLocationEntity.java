@@ -1,4 +1,4 @@
-package entities;
+package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table(name = "location")
-public class LocationEntity {
+public class ForecastLocationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

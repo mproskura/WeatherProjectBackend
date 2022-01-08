@@ -1,4 +1,4 @@
-package entities;
+package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
 
@@ -18,7 +18,7 @@ public class ForecastEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(cascade = CascadeType.MERGE)
-    private LocationEntity location;
+    private ForecastLocationEntity location;
     private LocalDate forecastDate;
     private LocalDate queryDate;
     @OneToMany(mappedBy = "forecast")

@@ -1,4 +1,4 @@
-package entities;
+package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
 
@@ -15,9 +15,13 @@ public class ForecastDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="forecast_details_id")
     private ServiceEntity service;
+
     @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name="forecastDetails")
     private ForecastEntity forecast;
     private double airTemperature;
     private double airPressure;

@@ -1,4 +1,4 @@
-package entities;
+package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
 
@@ -19,6 +19,6 @@ public class ServiceEntity {
     @Column(name="service_name")
     private String serviceName;
     @OneToMany(mappedBy = "service")
-    @Column(name="forecast_details_id")
+    @Column(name="service")
     private List<ForecastDetailsEntity> forecastDetails;
 }
