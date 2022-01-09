@@ -31,6 +31,7 @@ public class ForecastLocationMapper {
 
     public static ForecastLocationEntity entityFromLocation(ForecastLocation location) {
         return ForecastLocationEntity.builder()
+                .id(location.getId())
                 .latitude(location.getLatitude())
                 .longitude(location.getLongitude())
                 .type(location.getType())

@@ -1,6 +1,9 @@
 package com.sda.weatherprojectbackend.entities;
 
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.FetchProfile;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,6 +24,6 @@ public class ForecastEntity {
     private ForecastLocationEntity location;
     private LocalDate forecastDate;
     private LocalDate queryDate;
-    @OneToMany(mappedBy = "forecast")
+    @OneToMany(mappedBy = "forecast", fetch = FetchType.EAGER)
     List<ForecastDetailsEntity> forecastDetails;
 }

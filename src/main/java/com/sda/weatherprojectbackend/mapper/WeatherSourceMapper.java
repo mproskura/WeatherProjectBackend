@@ -13,7 +13,7 @@ public class WeatherSourceMapper {
 
     public static WeatherSourceEntity entityFromWeatherSource(WeatherSource weatherSource){
         return WeatherSourceEntity.builder()
-                .id(weatherSource.getId())
+//                .id(weatherSource.getId())
                 .sourceName(weatherSource.getSourceName())
                 .build();
     }

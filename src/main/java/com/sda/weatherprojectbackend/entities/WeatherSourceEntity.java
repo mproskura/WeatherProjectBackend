@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "weather_source")
 public class WeatherSourceEntity {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name="service_name")
     private String sourceName;

@@ -18,6 +18,6 @@ public class LocationSearchEntity {
     @Column(name="search_string")
     private String searchString;
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="locationSearches")
+    @JoinColumn(name="location_id")
     private ForecastLocationEntity location;
 }
