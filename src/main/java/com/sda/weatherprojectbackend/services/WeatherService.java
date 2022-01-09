@@ -34,11 +34,11 @@ public class WeatherService implements IWeatherService {
         ForecastLocation location = ForecastLocationMapper.locationFromEntity(forecastLocationRepository.getById(locationId));
         List<ForecastDetailsEntity> forecastDetails = new ArrayList<>(2);
 
-        Optional<ForecastDetails> detailsOptional = yrnoForecastComponent.getForecast(location, forecastDate);
-        if (detailsOptional.isPresent()){
-            WeatherService service = new WeatherService("")
-           forecastDetails.add(detailsOptional.get());
-        }
+//        Optional<ForecastDetails> detailsOptional = yrnoForecastComponent.getForecast(location, forecastDate);
+//        if (detailsOptional.isPresent()){
+////            WeatherService service = new WeatherService("")
+////           forecastDetails.add(detailsOptional.get());
+//        }
 
 
 
@@ -46,8 +46,8 @@ public class WeatherService implements IWeatherService {
     }
 
 
-    private void getForecastFromExternalServices(IWeatherForecastComponent weatherForecastComponent){
-        weatherForecastComponent.getForecast(loc)
-
-    }
+//    private void getForecastFromExternalServices(IWeatherForecastComponent weatherForecastComponent){
+//        weatherForecastComponent.getForecast(loc)
+//
+//    }
 }

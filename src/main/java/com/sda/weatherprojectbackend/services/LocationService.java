@@ -29,14 +29,13 @@ public class LocationService implements ILocationService {
 
     @Override
     public List<ForecastLocation> getLocations(String searchString) {
-        List<LocationSearchEntity> localSearchLocationResults = localSearchRepository.getAllBySearchString(searchString);
+        List<LocationSearchEntity> locationSearchResults = localSearchRepository.getAllBySearchString(searchString);
 
-
-        //todo do wyjaśnienia dlaczego pierwsze zapytanie nie zwraca wyników
-        if (localSearchLocationResults.isEmpty()) {
-            addToLocalRepositoryFromRemote(searchString);
+        if (locationSearchResults.isEmpty()) {
+            return addToLocalRepositoryFromRemote(searchString);
+        } else {
+            return getLocationsFromLocalRepository(locationSearchResults);
         }
-        return getLocationsFromLocalRepository(localSearchLocationResults);
     }
 
     private List<ForecastLocation> getLocationsFromLocalRepository(List<LocationSearchEntity> localSearchLocationResults) {
@@ -51,11 +50,13 @@ public class LocationService implements ILocationService {
         return result;
     }
 
-    private void addToLocalRepositoryFromRemote(String searchString) {
+    private List<ForecastLocation> addToLocalRepositoryFromRemote(String searchString) {
         List<ForecastLocation> locationsFromRemoteRepository = remoteSearchRepository.findLocations(searchString);
+        List<ForecastLocation> savedLocations = new ArrayList<>();
 
         for (ForecastLocation location : locationsFromRemoteRepository) {
             ForecastLocationEntity locationEntity = locationRepository.save(ForecastLocationMapper.entityFromLocation(location));
+            savedLocations.add(ForecastLocationMapper.locationFromEntity(locationEntity));
 
             LocationSearchEntity locationSearchEntity = LocationSearchEntity.builder()
                     .searchString(searchString)
@@ -63,5 +64,6 @@ public class LocationService implements ILocationService {
                     .build();
             localSearchRepository.save(locationSearchEntity);
         }
+        return savedLocations;
     }
 }
