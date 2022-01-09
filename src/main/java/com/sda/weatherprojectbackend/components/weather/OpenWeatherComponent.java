@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.weatherprojectbackend.components.uri.OpenWeatherUri;
 import com.sda.weatherprojectbackend.models.ForecastDetails;
 import com.sda.weatherprojectbackend.models.ForecastLocation;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URI;

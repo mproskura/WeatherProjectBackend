@@ -18,7 +18,7 @@ public class ForecastDetailsEntity {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="forecast_details_id")
-    private ServiceEntity service;
+    private WeatherSourceEntity source;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name="forecastDetails")

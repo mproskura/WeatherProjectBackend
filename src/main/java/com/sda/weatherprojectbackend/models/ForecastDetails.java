@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ForecastDetails {
     private Long id;
-    private Service service;
+    private WeatherSource weatherSource;
     private double airTemperature;
     private double airPressure;
     private double windSpeed;

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class WeatherSource {
     private Long id;
-    private String serviceName;
+    private String sourceName;
 }

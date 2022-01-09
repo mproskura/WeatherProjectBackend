@@ -11,14 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "service")
-public class ServiceEntity {
+@Table(name = "weather_source")
+public class WeatherSourceEntity {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
     @Column(name="service_name")
-    private String serviceName;
-    @OneToMany(mappedBy = "service")
+    private String sourceName;
+    @OneToMany(mappedBy = "source")
     @Column(name="service")
     private List<ForecastDetailsEntity> forecastDetails;
 }
