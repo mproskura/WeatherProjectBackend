@@ -29,9 +29,9 @@ public class ComponentFactory {
 
     }
 
-    private final Map<String, IWeatherForecastComponent> map = new HashMap<>();
+    private static final Map<String, IWeatherForecastComponent> map = new HashMap<>();
 
-    public Optional<IWeatherForecastComponent> get(String name) {
+    public static Optional<IWeatherForecastComponent> get(String name) {
         if (map.containsKey(name)) {
             return Optional.of(map.get(name));
         }
