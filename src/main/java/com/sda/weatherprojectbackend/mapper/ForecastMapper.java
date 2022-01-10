@@ -12,9 +12,9 @@ public class ForecastMapper {
                 .location(ForecastLocationMapper.entityFromLocation(forecast.getLocation()))
                 .forecastDate(forecast.getForecastDate())
                 .queryDate(forecast.getQueryDate())
-//                .forecastDetails(forecast.getForecastDetails().stream().map(forecastDetails ->
-//                                ForecastDetailsMapper.entityFromForecastDetails(forecastDetails))
-//                        .collect(Collectors.toList()))
+                .forecastDetails(forecast.getForecastDetails().stream().map(forecastDetails ->
+                                ForecastDetailsMapper.entityFromForecastDetails(forecastDetails))
+                        .collect(Collectors.toSet()))
                 .build();
     }
 
@@ -26,7 +26,7 @@ public class ForecastMapper {
                 .queryDate(forecastEntity.getQueryDate())
                 .forecastDetails(forecastEntity.getForecastDetails().stream().map(forecastDetailsEntity ->
                                 ForecastDetailsMapper.forecastDetailsFromEntity(forecastDetailsEntity))
-                        .collect(Collectors.toList()))
+                        .collect(Collectors.toSet()))
                 .build();
     }
 }

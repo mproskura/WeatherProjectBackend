@@ -19,6 +19,6 @@ public class WeatherSourceEntity {
     @Column(name="service_name")
     private String sourceName;
     @OneToMany(mappedBy = "source")
-    @Column(name="service")
+//    @Column(name="service")
     private List<ForecastDetailsEntity> forecastDetails;
 }

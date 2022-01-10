@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,13 +60,19 @@ public class WeatherService implements IWeatherService {
 
     private Forecast getForecastFromRemoteComponents(ForecastLocation location, LocalDate forecastDate) {
         List<WeatherSource> weatherSources = weatherSourceRepository.findAll().stream().map(WeatherSourceMapper::sourceFromEntity).collect(Collectors.toList());
-        weatherSources.forEach(weatherSource -> System.out.println(weatherSource.toString()));
         Forecast forecast = Forecast.builder()
                 .forecastDate(LocalDate.now())
                 .queryDate(LocalDate.now())
                 .location(location)
+                .forecastDetails(new HashSet<>())
                 .build();
 
+        ForecastEntity forecastEntity = saveForcecastDetails(location, forecastDate, forecast, weatherSources);
+
+        return ForecastMapper.forecastFromEntity(forecastEntity);
+    }
+
+    private ForecastEntity saveForcecastDetails(ForecastLocation location, LocalDate forecastDate ,Forecast forecast, List<WeatherSource> weatherSources) {
         ForecastEntity forecastEntity = forecastRepository.save(ForecastMapper.entityFromForecast(forecast));
 
         for (WeatherSource weatherSource : weatherSources) {
@@ -79,12 +86,12 @@ public class WeatherService implements IWeatherService {
                     ForecastDetailsEntity forecastDetailsEntity = ForecastDetailsMapper.entityFromForecastDetails(forecastDetails);
                     forecastDetailsEntity.setForecast(forecastEntity);
                     forecastDetailsRepository.save(forecastDetailsEntity);
+                    forecastDetailsRepository.flush();
+
+                    forecastEntity.getForecastDetails().add(forecastDetailsEntity);
                 }
             }
         }
-
-        //todo: poprawic forecast details nie pobiera sie z bazy pomimo fetch type eager
-        ForecastEntity forecastEntity1 = forecastRepository.getById(forecastEntity.getId());
-        return ForecastMapper.forecastFromEntity(forecastEntity1);
+        return forecastEntity;
     }
 }

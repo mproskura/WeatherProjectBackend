@@ -16,12 +16,12 @@ public class ForecastDetailsEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name="source_id")
+    @ManyToOne
+  //  @JoinColumn(name="source_id")
     private WeatherSourceEntity source;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="forecast_id")
+    @ManyToOne
+   // @Column(name="forecast_id")
     private ForecastEntity forecast;
     private double airTemperature;
     private double airPressure;

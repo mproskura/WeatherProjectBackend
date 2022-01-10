@@ -17,7 +17,7 @@ public class LocationSearchEntity {
     private Long id;
     @Column(name="search_string")
     private String searchString;
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="location_id")
+    @ManyToOne
+//    @JoinColumn(name="location_id")
     private ForecastLocationEntity location;
 }

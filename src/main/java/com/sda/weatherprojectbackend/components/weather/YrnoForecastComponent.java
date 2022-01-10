@@ -33,8 +33,8 @@ public class YrnoForecastComponent implements IWeatherForecastComponent {
                 Iterator<JsonNode> elements = timeseries.elements();
 
                 JsonNode forecast;
-                LocalTime twelveOClock = LocalTime.of(12, 00, 00);
-                LocalDateTime forecastDateTime = LocalDateTime.of(forecastDate, twelveOClock);
+
+                LocalDateTime forecastDateTime = getForecastDateTime(forecastDate);
 
                 for (Iterator<JsonNode> it = elements; it.hasNext(); ) {
                     JsonNode element = it.next();
@@ -61,5 +61,15 @@ public class YrnoForecastComponent implements IWeatherForecastComponent {
             }
         }
         return Optional.empty();
+    }
+
+    private LocalDateTime getForecastDateTime(LocalDate forecastDate) {
+        LocalDate today = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+        LocalTime forecastTime = LocalTime.of(12, 00, 00);
+        if (forecastDate.equals(today) && currentTime.isAfter(forecastTime)) {
+            forecastTime = LocalTime.of(currentTime.plusHours(1).getHour(), 0, 0);
+        }
+        return LocalDateTime.of(forecastDate, forecastTime);
     }
 }

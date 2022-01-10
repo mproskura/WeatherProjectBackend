@@ -7,7 +7,9 @@ import org.hibernate.annotations.FetchProfile;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Setter
@@ -20,10 +22,15 @@ public class ForecastEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(cascade = CascadeType.MERGE)
+
+    @ManyToOne
     private ForecastLocationEntity location;
+
     private LocalDate forecastDate;
     private LocalDate queryDate;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "forecast", fetch = FetchType.EAGER)
-    List<ForecastDetailsEntity> forecastDetails;
+    Set<ForecastDetailsEntity> forecastDetails = new HashSet<>();
 }
