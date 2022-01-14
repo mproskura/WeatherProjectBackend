@@ -61,7 +61,7 @@ public class WeatherService implements IWeatherService {
     private Forecast getForecastFromRemoteComponents(ForecastLocation location, LocalDate forecastDate) {
         List<WeatherSource> weatherSources = weatherSourceRepository.findAll().stream().map(WeatherSourceMapper::sourceFromEntity).collect(Collectors.toList());
         Forecast forecast = Forecast.builder()
-                .forecastDate(LocalDate.now())
+                .forecastDate(forecastDate)
                 .queryDate(LocalDate.now())
                 .location(location)
                 .forecastDetails(new HashSet<>())
