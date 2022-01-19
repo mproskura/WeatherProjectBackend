@@ -21,4 +21,5 @@ public class WeatherSourceEntity {
     @OneToMany(mappedBy = "source")
 //    @Column(name="service")
     private List<ForecastDetailsEntity> forecastDetails;
+    private String logoFileName;
 }

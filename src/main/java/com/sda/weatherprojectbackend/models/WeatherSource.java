@@ -10,4 +10,5 @@ import lombok.*;
 public class WeatherSource {
     private Long id;
     private String sourceName;
+    private String logoFileName;
 }

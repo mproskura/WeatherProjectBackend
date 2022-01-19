@@ -8,6 +8,7 @@ public class WeatherSourceMapper {
         return WeatherSource.builder()
                 .id(weatherServiceEntity.getId())
                 .sourceName(weatherServiceEntity.getSourceName())
+                .logoFileName(weatherServiceEntity.getLogoFileName())
                 .build();
     }
 
@@ -15,6 +16,7 @@ public class WeatherSourceMapper {
         return WeatherSourceEntity.builder()
                 .id(weatherSource.getId())
                 .sourceName(weatherSource.getSourceName())
+                .logoFileName(weatherSource.getLogoFileName())
                 .build();
     }
 }
