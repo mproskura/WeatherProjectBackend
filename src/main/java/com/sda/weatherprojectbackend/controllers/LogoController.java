@@ -23,8 +23,7 @@ public class LogoController {
         this.logoService = logoService;
     }
 
-
-    @GetMapping(value = "/logo  /{weatherServiceId}", produces = MediaType.IMAGE_PNG_VALUE)
+    @GetMapping(value = "/logo/{weatherServiceId}", produces = MediaType.IMAGE_PNG_VALUE)
     Resource downloadImage(@PathVariable Long weatherServiceId) {
         Optional<ByteArrayResource> logoImageOptional = logoService.getLogoImage(weatherServiceId);
         if (logoImageOptional.isPresent()) {
