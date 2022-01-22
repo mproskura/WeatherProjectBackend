@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-@CrossOrigin
+@CrossOrigin (origins = "*")
 @RestController
 public class LogoController {
 

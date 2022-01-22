@@ -2,6 +2,7 @@ package com.sda.weatherprojectbackend.services;
 
 import com.sda.weatherprojectbackend.components.weather.IWeatherForecastComponent;
 import com.sda.weatherprojectbackend.components.weather.OpenWeatherComponent;
+import com.sda.weatherprojectbackend.components.weather.TomorrowIoComponent;
 import com.sda.weatherprojectbackend.components.weather.YrnoForecastComponent;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,8 @@ import java.util.Optional;
 public class ComponentFactory {
     enum WeatherComponent {
         OPENWEATHER("OpenWeather", new OpenWeatherComponent()),
-        YRNOFORECAST("Yr.no", new YrnoForecastComponent());
+        YRNOFORECAST("Yr.no", new YrnoForecastComponent()),
+        TOMORROWIO("Tomorrow.io", new TomorrowIoComponent());
 
         private String name;
         private IWeatherForecastComponent component;

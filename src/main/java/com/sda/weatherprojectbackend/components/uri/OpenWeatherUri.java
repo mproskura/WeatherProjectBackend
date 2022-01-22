@@ -6,11 +6,12 @@ import org.apache.http.client.utils.URIBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 public class OpenWeatherUri implements IUri {
 
     @Override
-    public URI get(ForecastLocation location) {
+    public Optional<URI> get(ForecastLocation location) {
         HttpGet httpGet = new HttpGet("https://api.openweathermap.org/data/2.5/onecall");
         try {
             URI uri = new URIBuilder(httpGet.getURI())
@@ -20,10 +21,10 @@ public class OpenWeatherUri implements IUri {
                     .addParameter("appid", "ecb6ba405977c4ee40d4ac55d26b8cb0")
                     .addParameter("units","metric")
                     .build();
-            return uri;
+            return Optional.of(uri);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
-        return null;
+        return Optional.empty();
     }
 }

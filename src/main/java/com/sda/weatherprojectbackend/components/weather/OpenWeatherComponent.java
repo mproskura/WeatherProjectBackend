@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.weatherprojectbackend.components.uri.OpenWeatherUri;
+import com.sda.weatherprojectbackend.components.uri.YrnoUri;
 import com.sda.weatherprojectbackend.models.ForecastDetails;
 import com.sda.weatherprojectbackend.models.ForecastLocation;
 import org.springframework.stereotype.Component;
@@ -25,7 +26,11 @@ public class OpenWeatherComponent implements IWeatherForecastComponent {
     @Override
     public Optional<ForecastDetails> getForecast(ForecastLocation location, LocalDate forecastDate) {
 
-        URI uri = new OpenWeatherUri().get(location);
+        Optional<URI> optionalURI = new OpenWeatherUri().get(location);
+        if(optionalURI.isEmpty()){
+            return Optional.empty();
+        }
+        URI uri = optionalURI.get();
 
         Optional<HttpResponse<String>> responseOptional = HttpRequest.getResponse(uri);
         if (responseOptional.isPresent()) {

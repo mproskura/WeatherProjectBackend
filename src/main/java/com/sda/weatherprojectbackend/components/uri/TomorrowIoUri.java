@@ -6,15 +6,18 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 
-public class YrnoUri implements IUri {
-
+public class TomorrowIoUri implements IUri {
     @Override
     public Optional<URI> get(ForecastLocation location) {
         StringBuilder uriBuilder = new StringBuilder();
-        uriBuilder.append("https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=");
+        uriBuilder.append("https://api.tomorrow.io/v4/timelines?location=");
         uriBuilder.append(location.getLatitude());
-        uriBuilder.append("&lon=");
+        uriBuilder.append(",");
         uriBuilder.append(location.getLongitude());
+        uriBuilder.append("&fields=temperature,windSpeed,windDirection,cloudCover,pressureSurfaceLevel,humidity" +
+                "&timesteps=1h" +
+                "&units=metric" +
+                "&apikey=gWD2or7SKi7nR89TKKdDa8KKV38Z5Eiw");
         try {
             URI uri = new URI(uriBuilder.toString());
             return Optional.of(uri);

@@ -30,6 +30,10 @@ public class WeatherServices {
                 .sourceName("Yr.no")
                 .logoFileName("YrNo.png")
                 .build());
+        weatherSourceRepository.save(WeatherSourceEntity.builder()
+                .sourceName("Tomorrow.io")
+                .logoFileName("TomorrowIo.png")
+                .build());
 
     }
 
