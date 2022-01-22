@@ -34,6 +34,10 @@ public class TomorrowIoComponent implements IWeatherForecastComponent {
         if (responseOptional.isPresent()) {
             HttpResponse<String> response = responseOptional.get();
             try {
+                if (response.statusCode() == 429) {
+                    return Optional.empty();
+                }
+
                 JsonNode results = mapper.readTree(response.body());
                 JsonNode timelines = results.get("data").get("timelines");
                 JsonNode intervals = timelines.get(0).get("intervals");
@@ -65,7 +69,9 @@ public class TomorrowIoComponent implements IWeatherForecastComponent {
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
-
+//            catch (NullPointerException npe){
+//                npe.printStackTrace();
+//            }
         }
         return Optional.empty();
     }
