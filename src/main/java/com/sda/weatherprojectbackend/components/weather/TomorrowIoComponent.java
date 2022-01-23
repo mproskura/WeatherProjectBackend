@@ -35,6 +35,7 @@ public class TomorrowIoComponent implements IWeatherForecastComponent {
             HttpResponse<String> response = responseOptional.get();
             try {
                 if (response.statusCode() == 429) {
+                    System.out.println("Number of queries for Tomorrow.io exceeded");
                     return Optional.empty();
                 }
 
