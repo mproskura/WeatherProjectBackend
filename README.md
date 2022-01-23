@@ -1,7 +1,7 @@
 # Weather project
 
 ## Project objective
-The objective of the project is presenting weather reports from multiple sources in one place and in unified format. Additional goal was to create service that is open to easy implementation of additional weather services with publicly available APIs. 
+The objective of the project is presenting weather reports from multiple sources in one place and in unified format. Additional goal was to create solution that is open to easy implementation of additional weather services with publicly available APIs. Only backend extension is necessary to achieve this. 
 
 ## Functionality
 Following functionalities are available:
@@ -12,7 +12,7 @@ Following functionalities are available:
 * caching of responses from external services to speed up application and limit number of queries
 
 ## Technology
-Weather project consists of separately developed frontend and backend applications. Backend application exposes API that frontend uses. 
+Weather project consists of separately developed frontend and backend applications. Backend application exposes API that frontend uses.  
 
 ### Backend
 
@@ -32,7 +32,7 @@ Weather project consists of separately developed frontend and backend applicatio
 * Material UI
 
 ## Deployment
-Deploy version is available here:
+Deployed version is available here:
 
 However, if you wanted to deploy your own, following steps are necessary:
  1. Install SQL database compatible with Spring Data.
