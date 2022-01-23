@@ -22,12 +22,6 @@ class WeatherServiceTest {
     @Autowired
     ForecastRepository forecastRepository;
 
-    @Test
-    void getForecast() {
-        LocalDate testDate = LocalDate.of(2022,1,9);
-        System.out.println(weatherService.getForecast(88L, testDate).toString());
-
-    }
 
     @Test
     void getForecastWithId() {
