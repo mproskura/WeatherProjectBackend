@@ -13,6 +13,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.util.Optional;
@@ -26,14 +27,18 @@ public class LogoService {
         this.weatherSourceRepository = weatherSourceRepository;
     }
 
-    public Optional<ByteArrayResource> getLogoImage(long weatherServiceId)  {
+    public Optional<ByteArrayResource> getLogoImage(long weatherServiceId) {
         Optional<WeatherSourceEntity> byId = weatherSourceRepository.findById(weatherServiceId);
         if (byId.isPresent()) {
             String imageFileName = byId.get().getLogoFileName();
             try {
-                File imageFile = ResourceUtils.getFile("classpath:logos/" + imageFileName);
-                byte[] bytes = Files.readAllBytes(imageFile.toPath());
+                InputStream resourceAsStream = LogoService.class.getResourceAsStream("/logos/" + imageFileName);
+                byte[] bytes = resourceAsStream.readAllBytes();
                 return Optional.of(new ByteArrayResource(bytes));
+
+//                File imageFile = ResourceUtils.getFile("classpath:logos/" + imageFileName);
+//                byte[] bytes = Files.readAllBytes(imageFile.toPath());
+//                return Optional.of(new ByteArrayResource(bytes));
             } catch (IOException e) {
                 return Optional.empty();
             }
