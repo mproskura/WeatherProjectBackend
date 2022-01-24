@@ -26,7 +26,7 @@ public class LogoService {
         this.weatherSourceRepository = weatherSourceRepository;
     }
 
-    public Optional<ByteArrayResource> getLogoImage(long weatherServiceId)  {
+    public Optional<ByteArrayResource> getLogoImage(long weatherServiceId) {
         Optional<WeatherSourceEntity> byId = weatherSourceRepository.findById(weatherServiceId);
         if (byId.isPresent()) {
             String imageFileName = byId.get().getLogoFileName();
@@ -35,6 +35,7 @@ public class LogoService {
                 byte[] bytes = Files.readAllBytes(imageFile.toPath());
                 return Optional.of(new ByteArrayResource(bytes));
             } catch (IOException e) {
+                System.out.println("Picture loading exception: " + e);
                 return Optional.empty();
             }
         }
