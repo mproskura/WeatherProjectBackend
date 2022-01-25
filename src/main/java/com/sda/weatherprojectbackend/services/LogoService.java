@@ -32,16 +32,9 @@ public class LogoService {
         if (byId.isPresent()) {
             String imageFileName = byId.get().getLogoFileName();
             try {
-                //File imageFile = ResourceUtils.getFile("classpath:logos/" + imageFileName);
-//                byte[] bytes = Files.readAllBytes(imageFile.toPath());
-//                return Optional.of(new ByteArrayResource(bytes));
-
-                InputStream resourceAsStream = this.getClass().getResourceAsStream(imageFileName);
-                byte[] bytes2 =  resourceAsStream.readAllBytes();
-                return Optional.of(new ByteArrayResource(bytes2));
-
-//                InputStream systemResourceAsStream = ClassLoader.getSystemResourceAsStream(imageFileName);
-
+                InputStream resourceAsStream = LogoService.class.getResourceAsStream("/logos/" + imageFileName);
+                byte[] bytes = resourceAsStream.readAllBytes();
+                return Optional.of(new ByteArrayResource(bytes));
             } catch (IOException e) {
                 System.out.println("Picture loading exception: " + e);
                 return Optional.empty();
